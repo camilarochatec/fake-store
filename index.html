@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {}
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-teal-900 p-3">
+    <main class="bg-white p-3 rounded-md">
+        <!-- busca -->
+        <div class="mb-6">
+            <div class="flex items-center gap-2">
+                <!-- botão do menu hambúrguer -->
+                <div onclick="toggleMenu()" class="hidden sm:flex w-[40px] h-[40px] bg-teal-900 rounded-full justify-center items-center fill-white cursor-pointer">
+                    <box-icon name='menu-alt-left'></box-icon>
+                </div>
+                <!-- input de busca -->
+                <input type="text" placeholder="O que está buscando..." class="flex-grow h-[40px] border-2 border-gray-400 focus:border-teal-500 outline-none rounded-md pl-3 duration-100" />
+            </div>
+            <!-- botão do filter -->
+            <div class="md:hidden">
+                <div onclick="showFilter()" class="w-[40px] h-[40px] bg-teal-900 rounded-full fixed bottom-6 right-3 flex justify-center items-center z-50 fill-white">
+                    <box-icon type='solid' name='filter-alt'></box-icon>
+                </div>
+                <!-- cortina escura -->
+                <div id="overlay" onclick="showFilter()" class="w-full h-full bg-black opacity-0 invisible fixed top-0 left-0 z-40 duration-200"></div>
+                <!-- parte branca -->
+                <div id="gaveta" class="w-9/12 h-full bg-white fixed top-0 -right-full z-40 duration-200">
+                    <select id="category" onchange="applyFilters()" class="p-2">
+                        <option value="">Todas as categorias</option>
+                        <option value="Roupas">Roupas</option>
+                        <option value="Joalheria">Joalheria</option>
+                        <option value="Eletrônicos">Eletrônicos</option>
+                    </select>
+                    <select id="sort" onchange="applyFilters()" class="p-2">
+                        <option value="ratingDesc">Melhor avaliado</option>
+                        <option value="priceAsc">Menor preço</option>
+                    </select>
+                    <button onclick="applyFilters()" class="w-full bg-teal-900 text-white p-2 rounded-md font-bold">Filtrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- menu lateral esquerdo -->
+        <div id="menu-filtro" class="hidden md:block fixed top-0 left-0 h-full w-9/12 max-w-xs bg-white transform -translate-x-full transition-transform duration-200 shadow-lg z-40">
+            <div class="p-4">
+                <h2 class="text-lg font-bold mb-4">Filtros</h2>
+                <select id="category-menu" class="w-full border border-gray-300 rounded-md mb-4 p-2">
+                    <option value="">Todas as categorias</option>
+                    <option value="Roupas">Roupas</option>
+                    <option value="Joalheria">Joalheria</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                </select>
+                <select id="sort-menu" class="w-full border border-gray-300 rounded-md p-2 mb-4">
+                    <option value="ratingDesc">Melhor avaliado</option>
+                    <option value="priceAsc">Menor preço</option>
+                </select>
+                <button onclick="applyFilters()" class="w-full bg-teal-900 text-white p-2 rounded-md font-bold">Filtrar</button>
+            </div>
+        </div>
+
+        <!-- lista de produtos -->
+        <section id="produtos" class="grid gap-3 md:grid-cols-2 lg:grid-cols-4">vazia</section>
+    </main>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
+
+
