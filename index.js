@@ -58,8 +58,8 @@ function insertProducts(list) {
 // Função para aplicar os filtros quando o botão for clicado
 function applyFilters() {
     // Obter os valores selecionados nos selects
-    const categorySelect = document.getElementById("category-menu");
-    const sortSelect = document.getElementById("sort-menu");
+    const categorySelect = document.getElementById("category") || document.getElementById("category-menu");
+    const sortSelect = document.getElementById("sort") || document.getElementById("sort-menu");
     
     // Atualizar os filtros com os valores selecionados
     filter.category = categorySelect.value; // A categoria selecionada
@@ -67,6 +67,10 @@ function applyFilters() {
     
     // Aplicar os filtros e re-exibir os produtos
     insertProducts(products);
+    
+    // Fechar o menu de filtro lateral após aplicar os filtros
+    toggleMenu(); // Chama a função para fechar o menu lateral
+    showFilter(); // Fecha a gaveta mobile
 }
 
 // Função para alternar o menu lateral
@@ -76,6 +80,34 @@ function toggleMenu() {
     menuFiltro.classList.toggle("-translate-x-full");
 }
 
+// Função para exibir ou ocultar a gaveta de filtro e o overlay
+function showFilter() {
+    const gaveta = document.getElementById("gaveta");
+    const overlay = document.getElementById("overlay");
+
+    const isHidden = gaveta.classList.contains("right-0");
+
+    // Atualiza o estado da gaveta (mostrar ou esconder)
+    if (isHidden) {
+        gaveta.classList.remove("right-0");
+        gaveta.classList.add("-right-full");
+    } else {
+        gaveta.classList.remove("-right-full");
+        gaveta.classList.add("right-0");
+    }
+
+    // Atualiza o estado do overlay (mostrar ou esconder)
+    if (isHidden) {
+        overlay.classList.add("invisible");
+        overlay.classList.remove("opacity-70");
+        overlay.classList.add("opacity-0");
+    } else {
+        overlay.classList.remove("invisible");
+        overlay.classList.add("opacity-70");
+    }
+}
+
 // Chamar a função para carregar os produtos ao iniciar
 getProducts();
+
 
