@@ -30,22 +30,21 @@
                 <input type="text" placeholder="O que está buscando..." class="flex-grow h-[40px] border-2 border-gray-400 focus:border-teal-500 outline-none rounded-md pl-3 duration-100" />
             </div>
             <!-- botão do filtro -->
-    
             <div onclick="showFilter()" class="md:hidden flex w-[50px] h-[50px] bg-teal-900 rounded-full fixed bottom-6 right-3  justify-center items-center z-50 fill-white">
                 <box-icon type='solid' name='filter-alt'></box-icon>
             </div>
             <!-- cortina escura (overlay) -->
             <div id="overlay" onclick="showFilter()" class="md:hidden w-full h-full bg-black opacity-0 invisible fixed top-0 left-0 z-40 duration-200"></div>
-            <!-- menu lateral (gaveta de filtro) -->
+            <!-- menu lateral (gaveta de filtro - mobile) -->
             <div id="gaveta" class="md:hidden w-9/12 h-full bg-white fixed top-0 -right-full z-40 duration-200">
-                <select id="category-menu" class="w-full border border-gray-300 rounded-md mb-4 p-2">
+                <select id="category-menu-mobile" class="w-full border border-gray-300 rounded-md mb-4 p-2">
                     <option value="">Todas as categorias</option>
                     <option value="men's clothing">Roupas Masculinas</option>
                     <option value="women's clothing">Roupas Femininas</option>
                     <option value="jewelery">Joias</option>
                     <option value="electronics">Eletrônicos</option>
                 </select>
-                <select id="sort-menu" class="w-full border border-gray-300 rounded-md p-2 mb-4">
+                <select id="sort-menu-mobile" class="w-full border border-gray-300 rounded-md p-2 mb-4">
                     <option value="ratingDesc">Melhor avaliado</option>
                     <option value="priceAsc">Menor preço</option>
                 </select>
@@ -57,15 +56,15 @@
         <div id="menu-filtro" class="hidden md:block fixed top-0 left-0 h-full w-9/12 max-w-xs bg-white transform -translate-x-full transition-transform duration-200 shadow-lg z-40">
             <div class="p-4">
                 <h2 class="text-lg font-bold mb-4">Filtros</h2>
-                <select id="category-menu" class="w-full border border-gray-300 rounded-md mb-4 p-2">
+                <select id="category-menu-desktop" class="w-full border border-gray-300 rounded-md mb-4 p-2">
                     <option value="">Todas as categorias</option>
                     <option value="men's clothing">Roupas Masculinas</option>
                     <option value="women's clothing">Roupas Femininas</option>
                     <option value="jewelery">Joias</option>
                     <option value="electronics">Eletrônicos</option>
                 </select>
-                
-                <select id="sort-menu" class="w-full border border-gray-300 rounded-md p-2 mb-4">
+
+                <select id="sort-menu-desktop" class="w-full border border-gray-300 rounded-md p-2 mb-4">
                     <option value="ratingDesc">Melhor avaliado</option>
                     <option value="priceAsc">Menor preço</option>
                 </select>

@@ -7,23 +7,20 @@ let filter = {
 // Função para obter os produtos
 function getProducts() {
     fetch("https://fakestoreapi.com/products")
-    .then(resposta => resposta.json())
-    .then(resposta => {
-        products = resposta;
-        insertProducts(products); // Chama a função para inserir os produtos inicialmente
-    });
+        .then(response => response.json())
+        .then(response => {
+            products = response;
+            insertProducts(products); // Chama a função para inserir os produtos inicialmente
+        });
 }
-
-getProducts();
 
 // Função para inserir os produtos filtrados e ordenados
 function insertProducts(list) {
     const produtos = document.getElementById("produtos");
     produtos.innerHTML = ''; // Limpa a lista de produtos
-    
+
     // Filtragem por categoria
     let filteredList = list;
-
     if (filter.category) {
         filteredList = filteredList.filter(item => item.category.toLowerCase() === filter.category.toLowerCase());
     }
@@ -55,32 +52,41 @@ function insertProducts(list) {
     });
 }
 
-// Função para aplicar os filtros quando o botão for clicado
+// Função para aplicar os filtros
 function applyFilters() {
-    // Obter os valores selecionados nos selects
-    const categorySelect = document.getElementById("category") || document.getElementById("category-menu");
-    const sortSelect = document.getElementById("sort") || document.getElementById("sort-menu");
-    
+    // Identificar se é mobile ou desktop
+    const isMobile = window.innerWidth < 768;
+
+    // Selecionar os elementos de filtro apropriados
+    const categorySelect = isMobile
+        ? document.getElementById("category-menu-mobile")
+        : document.getElementById("category-menu-desktop");
+    const sortSelect = isMobile
+        ? document.getElementById("sort-menu-mobile")
+        : document.getElementById("sort-menu-desktop");
+
     // Atualizar os filtros com os valores selecionados
-    filter.category = categorySelect.value; // A categoria selecionada
-    filter.sortBy = sortSelect.value; // O tipo de ordenação (preço ou avaliação)
-    
-    // Aplicar os filtros e re-exibir os produtos
+    filter.category = categorySelect?.value || '';
+    filter.sortBy = sortSelect?.value || '';
+
+    // Aplicar os filtros e reexibir os produtos
     insertProducts(products);
-    
-    // Fechar o menu de filtro lateral após aplicar os filtros
-    toggleMenu(); // Chama a função para fechar o menu lateral
-    showFilter(); // Fecha a gaveta mobile
+
+    // Fechar menus
+    if (isMobile) {
+        showFilter(); // Fecha o menu mobile
+    } else {
+        toggleMenu(); // Fecha o menu desktop
+    }
 }
 
-// Função para alternar o menu lateral
+// Função para alternar o menu lateral (desktop)
 function toggleMenu() {
     const menuFiltro = document.getElementById("menu-filtro");
-    menuFiltro.classList.toggle("transform"); // Alterna a visibilidade do menu
-    menuFiltro.classList.toggle("-translate-x-full");
+    menuFiltro.classList.toggle("-translate-x-full"); // Alterna visibilidade
 }
 
-// Função para exibir ou ocultar a gaveta de filtro e o overlay
+// Função para exibir ou ocultar a gaveta de filtro e o overlay (mobile)
 function showFilter() {
     const gaveta = document.getElementById("gaveta");
     const overlay = document.getElementById("overlay");
@@ -107,7 +113,8 @@ function showFilter() {
     }
 }
 
-// Chamar a função para carregar os produtos ao iniciar
+// Carregar os produtos ao iniciar
 getProducts();
+
 
 

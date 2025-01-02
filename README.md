@@ -1,189 +1,268 @@
 # fake-store
 
 # HTML
-O HTML oferece:
-
-Um campo de busca para produtos.
-Um botão flutuante para abrir filtros.
-Um painel deslizante para aplicar filtros.
-Uma grade para listar os produtos.
----
-
-1. Corpo (`<body>`)
-- Classe do `<body>`: 
-  - `bg-`: Define o fundo verde da página.
-  - `p-3`: Aplica um espaçamento interno (padding) de 3.???
-
-2. Contêiner Principal (`<main>`):
-- **Classe do `<main>`: 
-  - `bg-white`: Define um fundo branco para o contêiner principal.
-  - `p-3`: Aplica um espaçamento interno (padding) de 3.???
-  - `rounded-md`: Arredonda os cantos.
-
-2.1. Busca de Produtos:**
-- **Campo de Busca (`<input>`):**
-  - Permite ao usuário digitar o termo de busca.
-  - Estilo:
-    - `w-full`: Ocupa 100% da largura do container.
-    - `h-[40px]`: Define altura de 40px.
-    - `border-2 border-gray-400`: Cria uma borda cinza de 2px.
-    - `focus:border-green`: Muda a borda para verde ao focar.
-    - `outline-none`: Remove o contorno padrão amarelado.
-    - `rounded-md`: Arredonda os cantos.
-    - `pl-3`: Adiciona espaçamento interno (padding) à esquerda.???
-    - `duration-100`: Suaviza transições em 100ms.
+Este é um código HTML que cria uma página web para uma loja fictícia chamada "Fake Store". Ele utiliza a biblioteca CSS Tailwind para estilização e alguns elementos interativos com JavaScript. Vou detalhar os principais componentes para facilitar o seu estudo:
 
 ---
 
-2.2. Botão de Filtro (`<div>` com `onclick="showFilter()"`):**
-- Este botão redondo e flutuante ativa a exibição de filtros.
-- Estilo do botão:
-  - `w-[40px] h-[40px]`: Define dimensões de 50px por 50px.
-  - `bg-green`: Fundo verde.
-  - `rounded-full`: Torna o botão circular.
-  - `fixed bottom-6 right-3`: Posiciona o botão fixamente no canto inferior direito.
-  - `flex justify-center items-center`: Centraliza o ícone dentro do botão.
-  - `fill-white`: Define a cor do ícone como branca.
+### Estrutura do Documento HTML
+1. **`<!DOCTYPE html>`**: Declara que este é um documento HTML5.
+2. **`<html lang="pt-BR">`**: Define o idioma da página como português do Brasil.
+3. **`<head>`**: Contém metadados e links para estilos e scripts externos.
+   - **`<meta charset="UTF-8">`**: Define a codificação de caracteres como UTF-8 (permite caracteres acentuados).
+   - **`<meta name="viewport" content="width=device-width, initial-scale=1.0">`**: Ajusta a visualização para dispositivos móveis.
+   - **`<title>Fake Store</title>`**: Define o título exibido na aba do navegador.
+   - **`<script src="https://cdn.tailwindcss.com"></script>`**: Carrega a biblioteca Tailwind CSS para estilização.
+   - **Configuração do Tailwind**: O script interno personaliza as configurações do Tailwind (neste caso, não adiciona cores extras, mas deixa espaço para personalização futura).
+
+4. **`<body>`**: Contém o conteúdo visível da página.
+   - A classe `bg-teal-900 p-3` define um fundo verde-azulado escuro com preenchimento (`padding`).
 
 ---
 
-2.3. Overlay e Gaveta de Filtros:**
-Overlay (`#overlay`)**:
-  - Uma camada escura e semi-transparente aparece ao abrir o filtro.
-  - Estilo:
-    - `w-full h-full`: Ocupa toda a tela.
-    - `bg-black opacity-0 invisible`: Inicialmente invisível.
-    - `fixed top-0 left-0`: Posicionado no topo esquerdo da tela.
-    - `duration-200`: Suaviza a transição.
+### Componentes da Página
+#### 1. **Busca**
+- **Menu Hambúrguer**: Botão que aparece em dispositivos menores (classe `sm:flex`) e serve para abrir um menu lateral ao clicar.
+- **Input de Busca**: Campo para o usuário pesquisar itens.
+- **Botão de Filtro (Mobile)**:
+  - Um botão circular fixado no canto inferior direito da tela para abrir os filtros.
 
-Gaveta de Filtros (`#gaveta`)**:
-  - Um painel deslizante à direita que contém opções de filtro.
-  - Estilo:
-    - `w-9/12 h-full`: Ocupa 9/12 da largura da tela e toda a altura.
-    - `bg-white`: Fundo branco.
-    - `fixed top-0 -right-full`: Posicionado fora da tela inicialmente.
-    - `duration-200`: Suaviza a transição.
+#### 2. **Overlay e Gaveta de Filtros (Mobile)**
+- **Overlay**: Uma cortina escura aparece ao abrir os filtros, impedindo interações com outros elementos.
+- **Gaveta de Filtros**: Um menu lateral deslizante que contém:
+  - Seleção de categorias.
+  - Ordenação de produtos.
+  - Botão para aplicar filtros.
 
-Opções de Filtros (`<select>`):**
-  - Filtros de categorias e ordenação.
+#### 3. **Menu Lateral (Desktop)**
+- Exibido somente em telas maiores (classe `md:block`).
+- Contém os mesmos filtros que a versão mobile.
+
+#### 4. **Lista de Produtos**
+- **Seção `produtos`**: Um grid dinâmico onde os produtos seriam exibidos. Atualmente, está vazia.
 
 ---
 
- 2.4. Lista de Produtos (`<section id="produtos">`):**
-- Uma seção vazia inicialmente, destinada a exibir os produtos da loja.
-- Estilo:
-  - `grid gap-3`: Organiza os produtos em uma grade com espaçamento.
-  - `md:grid-cols-2 lg:grid-cols-4`: Configurações de responsividade (2 colunas em telas médias e 4 em telas grandes).
+### Scripts e Interatividade
+1. **Tailwind e Boxicons**:
+   - **Tailwind CSS**: Facilita a criação de estilos responsivos e modernos.
+   - **Boxicons**: Biblioteca de ícones usada para o menu e o botão de filtro.
+2. **Interatividade**:
+   - **Funções JavaScript**: 
+     - `toggleMenu()`: Provavelmente usada para abrir/fechar o menu hambúrguer.
+     - `showFilter()`: Mostra ou esconde a gaveta de filtros e o overlay.
+     - `applyFilters()`: Aplica os filtros escolhidos pelo usuário.
 
+3. **Arquivo `index.js`**:
+   - Está referenciado no final do corpo (`<script src="index.js"></script>`). Provavelmente, contém a lógica para carregar produtos e lidar com interações de filtros e busca.
+
+---
+
+### Estilização e Responsividade
+1. **Classes do Tailwind**:
+   - As classes CSS são altamente configuráveis e ajudam a criar layouts rapidamente.
+   - Exemplos:
+     - `bg-teal-900`: Cor de fundo.
+     - `rounded-full`: Bordas arredondadas (círculo).
+     - `flex items-center gap-2`: Layout flexível com espaçamento.
+     - `hidden sm:flex`: Oculta o elemento em telas menores que `sm`.
+
+2. **Responsividade**:
+   - Usando breakpoints (`sm`, `md`, `lg`) para adaptar o layout a diferentes tamanhos de tela.
+
+---
+
+### O que estudar a seguir:
+1. **HTML**:
+   - Estrutura básica.
+   - Elementos como `div`, `input`, `button`, e `select`.
+2. **CSS e Tailwind**:
+   - Entender classes utilitárias (estilização rápida e responsiva).
+   - Experimentar modificações para aprender na prática.
+3. **JavaScript**:
+   - Como manipular o DOM (Document Object Model).
+   - Funções de interação, como `onclick` e manipulação de classes.
+4. **Interatividade**:
+   - Aprender como criar e usar filtros dinâmicos.
+
+Se precisar de explicações mais detalhadas sobre algum ponto específico, é só perguntar!
 ---
 # JAVASCRIPT
-utiliza JavaScript para buscar, exibir produtos de uma API e gerenciar um sistema de filtros com uma interface dinâmica:
-
- #Declaração de Variáveis
-- `let products = [];`  
-  Um array vazio para armazenar os produtos recebidos da API.
-
-- `let filter = [];`  
-  Um array vazio para armazenar critérios de filtro. (Não utilizado diretamente no código fornecido, mas presumivelmente para futuros filtros.)
+Este código JavaScript é responsável por gerenciar o carregamento, filtragem e exibição dos produtos de uma loja fictícia. Vou explicar cada parte para facilitar seu entendimento e estudo.
 
 ---
 
-#função `getProducts()`
-Responsável por buscar os produtos da API e armazená-los no array `products`.
-
+### 1. **Variáveis Globais**
 ```javascript
-fetch("https://fakestoreapi.com/products")
+let products = [];
+let filter = {
+    category: '',
+    sortBy: ''
+};
 ```
-- Faz uma requisição `GET` à API `https://fakestoreapi.com/products` para obter a lista de produtos.
+- **`products`**: Armazena a lista de produtos obtida da API.
+- **`filter`**: Contém os critérios de filtragem e ordenação:
+  - `category`: Categoria selecionada para filtrar os produtos.
+  - `sortBy`: Tipo de ordenação, como menor preço (`priceAsc`) ou melhor avaliação (`ratingDesc`).
 
+---
+
+### 2. **Função `getProducts`**
 ```javascript
-.then(resposta => resposta.json())
+function getProducts() {
+    fetch("https://fakestoreapi.com/products")
+    .then(resposta => resposta.json())
+    .then(resposta => {
+        products = resposta;
+        insertProducts(products);
+    });
+}
 ```
-- Converte a resposta da API em JSON.
+- **Propósito**: Obtém os produtos da API [FakeStoreAPI](https://fakestoreapi.com/).
+- **Detalhes**:
+  - Usa `fetch` para fazer uma requisição HTTP e obter os dados.
+  - Os dados são convertidos para JSON com `.json()` e armazenados em `products`.
+  - Chama a função `insertProducts` para exibir os produtos na tela.
 
+---
+
+### 3. **Função `insertProducts`**
 ```javascript
-.then(resposta => {
-    products = resposta;
+function insertProducts(list) {
+    const produtos = document.getElementById("produtos");
+    produtos.innerHTML = ''; // Limpa a lista de produtos
+    
+    let filteredList = list;
+
+    if (filter.category) {
+        filteredList = filteredList.filter(item => item.category.toLowerCase() === filter.category.toLowerCase());
+    }
+
+    if (filter.sortBy) {
+        if (filter.sortBy === 'priceAsc') {
+            filteredList.sort((a, b) => a.price - b.price);
+        } else if (filter.sortBy === 'ratingDesc') {
+            filteredList.sort((a, b) => b.rating.rate - a.rating.rate);
+        }
+    }
+
+    filteredList.forEach(item => {
+        produtos.innerHTML += `
+            <div class="border border-gray-400 rounded-md overflow-hidden" title="${item.title}">
+                <div class="relative">
+                    <h6 class="absolute top-3 right-3 bg-teal-900 text-white px-2 py-1 rounded-md font-bold">${item.rating.rate}</h6>
+                    <img src="${item.image}" class="w-full h-[250px] p-3 object-contain" />
+                </div>
+                <div class="p-3">
+                    <h5 class="text-xl md:line-clamp-1">${item.title}</h5>
+                    <h6 class="text-teal-900 font-bold mb-3">${item.category}</h6>
+                    <h2 class="text-3xl text-right font-bold">R$ ${item.price.toFixed(2)}</h2>
+                </div>
+            </div>
+        `;
+    });
+}
+```
+- **Propósito**: Exibe os produtos na página, aplicando filtros e ordenação.
+- **Processo**:
+  1. **Limpeza**: Remove os produtos existentes para exibir apenas os novos.
+  2. **Filtragem**: Filtra os produtos por categoria, se especificada.
+  3. **Ordenação**:
+     - `priceAsc`: Ordena do menor para o maior preço.
+     - `ratingDesc`: Ordena do mais bem avaliado para o menos avaliado.
+  4. **Renderização**: Cria o HTML para cada produto e adiciona ao elemento com `id="produtos"`.
+
+---
+
+### 4. **Função `applyFilters`**
+```javascript
+function applyFilters() {
+    const categorySelect = document.getElementById("category") || document.getElementById("category-menu");
+    const sortSelect = document.getElementById("sort") || document.getElementById("sort-menu");
+    
+    filter.category = categorySelect.value;
+    filter.sortBy = sortSelect.value;
+
     insertProducts(products);
-})
-```
-- Armazena os dados no array `products` e chama a função `insertProducts(products)` para renderizar os produtos na interface.
----
 
-#Função `insertProducts(list)`
-Responsável por inserir os produtos fornecidos como uma lista na interface.
-
-```javascript
-produtos.innerHTML = '';
-```
-- Limpa qualquer conteúdo existente no elemento HTML identificado como `produtos`.
-
-```javascript
-list.map(item => { ... })
-```
-- Itera sobre cada item da lista de produtos fornecida e cria o HTML correspondente.
-
-```javascript
-produtos.innerHTML += `
-    <div class="border border-gray-400 rounded-md overflow-hidden" title="${item.title}">
-        <div class="relative">
-            <h6 class="absolute top-3 right-3 bg-teal-900 text-white px-2 py-1 rounded-md font-bold">${item.rating.rate}</h6>
-            <img src="${item.image}" class="w-full h-[250px] p-3 object-contain" />
-        </div>
-        <div class="p-3">
-            <h5 class="text-xl md:line-clamp-1">${item.title}</h5>
-            <h6 class="text-teal-900 font-bold mb-3">${item.category}</h6>
-            <h2 class="text-3xl text-right font-bold">R$ ${item.price.toFixed(2)}</h2>
-        </div>
-    </div>
-`;
-```
-- Para cada item, adiciona um card contendo:
-  - **Nota do produto**: exibida no canto superior direito.
-  - **Imagem do produto**.
-  - **Título e categoria**.
-  - **Preço**: formatado com `toFixed(2)` para exibir 2 casas decimais.
-
----
-
-### Função `showFilter()`
-Controla a exibição do filtro lateral e da cortina de fundo (overlay).
-
-```javascript
-if(overlay.classList.contains("invisible")) {
-    overlay.classList.remove("invisible");
-    overlay.classList.remove("opacity-0");
-    overlay.classList.add("opacity-70");
+    toggleMenu();
+    showFilter();
 }
 ```
-- Caso o elemento com id `overlay` esteja invisível:
-  - Remove a classe `invisible` e `opacity-0` (opacidade zero).
-  - Adiciona a classe `opacity-70` (visível com 70% de opacidade).
-
-```javascript
-if(gaveta.classList.contains("-right-full")) {
-    gaveta.classList.remove("-right-full");
-    gaveta.classList.add("right-0");
-}
-```
-- Caso o elemento com id `gaveta` esteja escondido fora da tela:
-  - Remove a classe `-right-full` e adiciona a classe `right-0` para posicioná-lo visível.
-
-O **else** de ambos os trechos inverte as alterações feitas, permitindo ocultar novamente os elementos.
+- **Propósito**: Atualiza os filtros e exibe os produtos correspondentes.
+- **Passos**:
+  1. Obtém os valores dos selects de categoria e ordenação.
+  2. Atualiza o objeto `filter` com os valores selecionados.
+  3. Chama `insertProducts` para aplicar os filtros e atualizar a lista de produtos.
+  4. Fecha os menus de filtro no desktop e no mobile.
 
 ---
 
-### Fluxo Geral
-1. **Carregamento inicial**:
-   - A função `getProducts()` é chamada ao carregar o script.
-   - Faz a requisição à API, processa os produtos e exibe-os usando `insertProducts`.
+### 5. **Função `toggleMenu`**
+```javascript
+function toggleMenu() {
+    const menuFiltro = document.getElementById("menu-filtro");
+    menuFiltro.classList.toggle("transform");
+    menuFiltro.classList.toggle("-translate-x-full");
+}
+```
+- **Propósito**: Mostra ou esconde o menu de filtros no desktop.
+- **Detalhes**:
+  - Adiciona ou remove as classes `transform` e `-translate-x-full` para manipular a visibilidade do menu.
 
-2. **Exibição dos produtos**:
-   - Os produtos são renderizados como cards dinâmicos com informações relevantes.
+---
 
-3. **Controle de filtros**:
-   - A função `showFilter()` alterna a visibilidade da gaveta de filtros e do overlay ao ser acionada (provavelmente ao clicar em um botão).
+### 6. **Função `showFilter`**
+```javascript
+function showFilter() {
+    const gaveta = document.getElementById("gaveta");
+    const overlay = document.getElementById("overlay");
 
-Esse código cria uma interface funcional e responsiva que utiliza dados de uma API para exibir produtos e gerenciar filtros de forma interativa.
+    const isHidden = gaveta.classList.contains("right-0");
 
+    if (isHidden) {
+        gaveta.classList.remove("right-0");
+        gaveta.classList.add("-right-full");
+    } else {
+        gaveta.classList.remove("-right-full");
+        gaveta.classList.add("right-0");
+    }
 
+    if (isHidden) {
+        overlay.classList.add("invisible");
+        overlay.classList.remove("opacity-70");
+        overlay.classList.add("opacity-0");
+    } else {
+        overlay.classList.remove("invisible");
+        overlay.classList.add("opacity-70");
+    }
+}
+```
+- **Propósito**: Controla a exibição da gaveta de filtros no mobile.
+- **Detalhes**:
+  - Alterna entre as classes `-right-full` e `right-0` para esconder ou mostrar a gaveta.
+  - Atualiza a visibilidade e opacidade do `overlay` (fundo escuro).
+
+---
+
+### 7. **Chamada Inicial**
+```javascript
+getProducts();
+```
+- A função `getProducts` é chamada para carregar os produtos assim que a página é carregada.
+
+---
+
+### Conceitos Importantes para Estudo
+1. **`fetch`**:
+   - Como fazer requisições HTTP e lidar com Promises.
+2. **Manipulação do DOM**:
+   - Usando `document.getElementById`, `innerHTML` e classes CSS para criar interatividade.
+3. **Array Methods**:
+   - `filter`: Para filtrar produtos por categoria.
+   - `sort`: Para ordenar os produtos.
+   - `forEach`: Para iterar sobre os produtos e gerar o HTML.
+4. **Classes e Estilização**:
+   - Manipulação dinâmica de classes com `classList`.
+
+Se precisar de mais explicações ou exemplos, é só perguntar!
